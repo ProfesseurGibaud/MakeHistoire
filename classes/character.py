@@ -9,18 +9,18 @@ class Character:
         self.list_actions = []
         self.list_thoughts = []
     
-    def summarize_with_ia(self,):
+    def summarize_with_ia(self):
         """
         Function to summarize the character's thoughts and actions using the IA.
         """
         
         for i in range(len(self.list_story)):
             prompt_thought = f"""
-            summarize what I thought in one sentence. My original thought was: {self.list_thoughts[i]}
+            As the character {self.name}, my original thought was: {self.list_thoughts[i]}. I summarize what I thought in one sentence.
             """
             response_thought = fct.send_prompt(prompt_thought, model=self.model)
             prompt_action = f"""
-            summarize what I did in one sentence. My original action was: {self.list_actions[i]}
+            As the character {self.name}, my original action was: {self.list_actions[i]}. I summarize what I did in one sentence.
             """
             response_action = fct.send_prompt(prompt_action, model=self.model)
             print(f"Summarized thought: {response_thought}")
